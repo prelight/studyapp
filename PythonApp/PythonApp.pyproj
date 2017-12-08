@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201712_week2\q12_ans.py</StartupFile>
+    <StartupFile>201712_week2\nikkei01.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="201709_week1\q1_ans.py" />
     <Compile Include="201709_week1\q2_ans.py" />
+    <Compile Include="201712_week2\nikkei01.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="201712_week2\q12_ans.py">
       <SubType>Code</SubType>
     </Compile>
