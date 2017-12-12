@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201712_week2\nikkei01.py</StartupFile>
+    <StartupFile>201712_week2\my_try.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -53,12 +53,18 @@
     </Compile>
     <Compile Include="201709_week1\q1_ans.py" />
     <Compile Include="201709_week1\q2_ans.py" />
-    <Compile Include="201712_week2\nikkei01.py">
+    <Compile Include="201712_week1\nikkei01.py" />
+    <Compile Include="201712_week1\q12_ans.py" />
+    <Compile Include="201712_week2\check.py" />
+    <Compile Include="201712_week2\dl.py" />
+    <Compile Include="201712_week2\image_to_db.py" />
+    <Compile Include="201712_week2\image_to_db2.py" />
+    <Compile Include="201712_week2\my_select_image.py" />
+    <Compile Include="201712_week2\my_try.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="201712_week2\q12_ans.py">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="201712_week2\nn-flower.py" />
+    <Compile Include="201712_week2\nn-flower3.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -66,6 +72,7 @@
     <Folder Include="201708_week1\" />
     <Folder Include="201709_week1\" />
     <Folder Include="201709_week1\" />
+    <Folder Include="201712_week1\" />
     <Folder Include="201712_week2\" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="201707_week4\question.txt" />
+    <Content Include="201712_week2\question2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
