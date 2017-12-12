@@ -41,8 +41,8 @@ def make_dataset(max_photo, outfile):
   #glob_images("./sunflower-ok", 1, max_photo) # ヒマワリ
   #glob_images("./rose-ok", 2, max_photo)      # バラ
   X = np.array(X, dtype=np.float32)
-  #atode okamoto ..
-  #np.savez(outfile, X=X, y=y)
+  
+  np.savez(outfile, X=X, y=y)
   print("saved:" + outfile)
 
 # データセットを2種類作成する
