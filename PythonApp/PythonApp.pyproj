@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201712_week2\my_try.py</StartupFile>
+    <StartupFile>201801_week1\00_sin_simple_try.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="201712_week2\nn-flower.py" />
     <Compile Include="201712_week2\nn-flower3.py" />
+    <Compile Include="201801_week1\00_graph.py" />
+    <Compile Include="201801_week1\00_sin_simple_try.py" />
+    <Compile Include="201801_week1\00_sin_simple_rnn_tensorflow.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -75,6 +78,7 @@
     <Folder Include="201709_week1\" />
     <Folder Include="201712_week1\" />
     <Folder Include="201712_week2\" />
+    <Folder Include="201801_week1\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
