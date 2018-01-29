@@ -69,6 +69,9 @@
     <Compile Include="201801_week1\00_graph.py" />
     <Compile Include="201801_week1\00_sin_simple_try.py" />
     <Compile Include="201801_week1\00_sin_simple_rnn_tensorflow.py" />
+    <Compile Include="pands_try.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
