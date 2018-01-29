@@ -69,6 +69,12 @@
     <Compile Include="201801_week1\00_graph.py" />
     <Compile Include="201801_week1\00_sin_simple_try.py" />
     <Compile Include="201801_week1\00_sin_simple_rnn_tensorflow.py" />
+    <Compile Include="201802_week1\pandas_try.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="201802_week1\pred01.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -79,6 +85,7 @@
     <Folder Include="201712_week1\" />
     <Folder Include="201712_week2\" />
     <Folder Include="201801_week1\" />
+    <Folder Include="201802_week1\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
@@ -86,6 +93,7 @@
   <ItemGroup>
     <Content Include="201707_week4\question.txt" />
     <Content Include="201712_week2\question2.txt" />
+    <Content Include="201802_week1\sample.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
