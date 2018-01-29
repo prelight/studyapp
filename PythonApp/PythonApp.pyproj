@@ -72,7 +72,12 @@
     <Compile Include="201802_week1\pandas_try.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="201802_week1\pred01.py">
+    <Compile Include="201802_week1\pred01.py" />
+    <Compile Include="201802_week1\pandas_first.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="201802_week1\pred02_try.py" />
+    <Compile Include="201802_week1\pred02.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
