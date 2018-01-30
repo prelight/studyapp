@@ -7,8 +7,8 @@ https://github.com/corrieelston/datalab/blob/master/FinancialTimeSeriesTensorFlo
 from __future__ import print_function
 
 import datetime
-import urllib2
-# import urllib3
+#import urllib2
+import urllib3
 from os import path
 import operator as op
 from collections import namedtuple
@@ -444,6 +444,9 @@ def feed_dict(env, test=False):
 def main(args):
     print('株価指標データをダウンロードしcsvファイルに保存')
     fetchStockIndexes()
+
+    exit
+
     print('株価指標データを読み込む')
     all_data  = load_exchange_dataframes()
     print('終値を取得')
