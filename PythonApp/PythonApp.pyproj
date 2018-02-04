@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201802_week1\pred02_try.py</StartupFile>
+    <StartupFile>201802_week2\tsunaki_try.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -85,6 +85,12 @@
     <Compile Include="201802_week1\pred02.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="201802_week2\normalization.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="201802_week2\tsunaki_try.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -96,6 +102,8 @@
     <Folder Include="201712_week2\" />
     <Folder Include="201801_week1\" />
     <Folder Include="201802_week1\" />
+    <Folder Include="201802_week2\" />
+    <Folder Include="201802_week2\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
@@ -104,6 +112,7 @@
     <Content Include="201707_week4\question.txt" />
     <Content Include="201712_week2\question2.txt" />
     <Content Include="201802_week1\sample.csv" />
+    <Content Include="201802_week2\1321-10y.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
