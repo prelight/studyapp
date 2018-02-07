@@ -91,6 +91,9 @@
     <Compile Include="201802_week2\normalization.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="201802_week2\temp_try.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="201802_week2\tsunaki_try.py">
       <SubType>Code</SubType>
     </Compile>

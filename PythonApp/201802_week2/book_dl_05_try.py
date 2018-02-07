@@ -7,7 +7,7 @@ from keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
-import matplotlib.pyplot as plt
+
 
 np.random.seed(0)
 
@@ -53,7 +53,7 @@ def main():
     data = []
     target = []
 
-    #print(f)
+    print(f)
     #print(f[0:2])
     #print(f[2])
 
