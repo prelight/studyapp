@@ -85,6 +85,8 @@
     <Compile Include="201802_week1\pred02.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="201802_week2\05_mnist_dropout_tensorflow.py" />
+    <Compile Include="201802_week2\06_mnist_plot_tensorflow.py" />
     <Compile Include="201802_week2\book_dl_05_try.py">
       <SubType>Code</SubType>
     </Compile>
@@ -124,6 +126,7 @@
     <Content Include="201712_week2\question2.txt" />
     <Content Include="201802_week1\sample.csv" />
     <Content Include="201802_week2\1321-10y.csv" />
+    <Content Include="201802_week2\matome2.txt" />
     <Content Include="201802_week2\question3.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
