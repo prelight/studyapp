@@ -23,3 +23,14 @@
 ⑩n_batchesの繰り返し終了
 ⑪検証データを用いた評価(loss, accuracy)
 ⑫epochsの繰り返し終了
+
+
+■テクニック
+・データの正規化と重みの初期化
+・学習率の設定
+	→モメンタム
+	→Adagrad
+	→Adadelta
+	→Adam
+・EaryStopping
+	→前のエポックのときと比べ誤差が増えたら学習を打ち切る
