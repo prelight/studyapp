@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201802_week2\tsunaki_try.py</StartupFile>
+    <StartupFile>201802_week3\00_rnn_tensorflow_try.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -104,6 +104,10 @@
     <Compile Include="201802_week2\tsunaki_try.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="201802_week3\00_rnn_tensorflow_try.py" />
+    <Compile Include="201802_week3\00_sin_simple_rnn_keras.py" />
+    <Compile Include="201802_week3\02_sin_gru_keras.py" />
+    <Compile Include="201802_week3\temp_try.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -117,6 +121,7 @@
     <Folder Include="201802_week1\" />
     <Folder Include="201802_week2\" />
     <Folder Include="201802_week2\" />
+    <Folder Include="201802_week3\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
