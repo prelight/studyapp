@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201802_week3\00_rnn_tensorflow_try.py</StartupFile>
+    <StartupFile>201802_week4\random_number.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -108,6 +108,9 @@
     <Compile Include="201802_week3\00_sin_simple_rnn_keras.py" />
     <Compile Include="201802_week3\02_sin_gru_keras.py" />
     <Compile Include="201802_week3\temp_try.py" />
+    <Compile Include="201802_week4\random_number.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -122,6 +125,7 @@
     <Folder Include="201802_week2\" />
     <Folder Include="201802_week2\" />
     <Folder Include="201802_week3\" />
+    <Folder Include="C:\Users\tokamoto\Documents\workplace\study\StudyApp\PythonApp\201802_week4\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />

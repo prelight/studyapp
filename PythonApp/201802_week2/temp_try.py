@@ -52,7 +52,7 @@ plt.show()
 
 
 #---------------------
-##③truncated_normal
+##③truncated_normal(切断正規分布)
 #x = tf.truncated_normal(shape=[2, 5],mean=0.0, stddev=1.0,dtype=tf.float32)
 #with tf.Session() as sess:
 #    y = x.eval()
