@@ -5,17 +5,17 @@ import matplotlib.pyplot as plt
 
 #⑤円周上の点分布(極座標の応用、polarは不使用)
 # 0〜πまでの乱数を4000個生成(一様分布)
-theta = np.random.rand(4000) * np.pi 
+theta = np.random.rand(2000) * np.pi * 2
 # 2〜4までの乱数を4000個生成(正規分布)
 #t = tf.truncated_normal(shape=[4000], mean=3, stddev=0.5, dtype=tf.float32)
-t = tf.random_normal(shape=[4000], mean=3, stddev=0.4, dtype=tf.float32)
+t = tf.random_normal(shape=[2000], mean=3, stddev=0.4, dtype=tf.float32)
 sess = tf.Session()
 r = t.eval(session=sess)
 x= r * np.cos(theta)
 y= r * np.sin(theta)
 plt.plot(x, y, '.')
-plt.xlim([-5,5])
-plt.ylim([0,8])
+plt.xlim([-8,8])
+plt.ylim([-6,6])
 plt.show()
 
 
