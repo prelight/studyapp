@@ -111,6 +111,9 @@
     <Compile Include="201802_week4\random_number.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="201803_week1\first_stock.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="201707_week3\" />
@@ -126,7 +129,7 @@
     <Folder Include="201802_week2\" />
     <Folder Include="201802_week3\" />
     <Folder Include="201802_week4\" />
-    <Folder Include="C:\Users\tokamoto\Documents\workplace\study\StudyApp\PythonApp\201802_week4\" />
+    <Folder Include="201803_week1\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda36-64" />
