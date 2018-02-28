@@ -5,7 +5,7 @@
     <ProjectGuid>0e2e68e0-c114-4f3e-b671-6988154f6805</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>201802_week4\random_number.py</StartupFile>
+    <StartupFile>201803_week1\first_stock.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
