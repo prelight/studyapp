@@ -110,7 +110,7 @@ def main():
     モデル学習
     '''
     epochs = 30
-    batch_size = 20
+    batch_size = 10
 
     hist = model.fit(X_train, Y_train,
               batch_size=batch_size,
@@ -127,7 +127,8 @@ def main():
 
     plt.rc('font', family='serif')
     fig = plt.figure()
-    plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
+    #plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
+    plt.plot(range(len(hist.epoch)), val_loss, label='acc', color='black')
     plt.xlabel('epochs')
     plt.show()
 
