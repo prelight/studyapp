@@ -94,8 +94,8 @@ val_loss = hist.history['val_loss']
 
 plt.rc('font', family='serif')
 fig = plt.figure()
-#plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
-plt.plot(range(len(hist.epoch)), val_loss, label='acc', color='black')
+plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
+#plt.plot(range(len(hist.epoch)), val_loss, label='acc', color='black')
 plt.xlabel('epochs')
 plt.show()
 

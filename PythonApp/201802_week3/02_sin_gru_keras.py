@@ -70,7 +70,8 @@ model.add(Activation('linear'))
 
 optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)
 model.compile(loss='mean_squared_error',
-              optimizer=optimizer)
+              optimizer=optimizer,
+              metrics=['accuracy'])
 
 '''
 モデル学習
@@ -78,11 +79,23 @@ model.compile(loss='mean_squared_error',
 epochs = 500
 batch_size = 10
 
-model.fit(X_train, Y_train,
+hist = model.fit(X_train, Y_train,
           batch_size=batch_size,
           epochs=epochs,
           validation_data=(X_validation, Y_validation),
           callbacks=[early_stopping])
+
+#okamoto code
+val_acc = hist.history['val_acc']
+val_loss = hist.history['val_loss']
+
+plt.rc('font', family='serif')
+fig = plt.figure()
+#plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
+plt.plot(range(len(hist.epoch)), val_loss, label='acc', color='black')
+plt.xlabel('epochs')
+plt.show()
+
 
 '''
 出力を用いて予測
