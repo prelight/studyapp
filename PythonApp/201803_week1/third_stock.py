@@ -15,7 +15,9 @@ from sklearn.utils import shuffle
 
 data = []
 target = []
-
+#openx = []
+#highx = []
+#lowx = []
 
 def get_cols_name():
     cols = []
@@ -46,7 +48,11 @@ def get_data():
     #df = df.dropna(subset=['close'])#nanを削除
     df = df.sort_values(by=['time'], ascending=True)#index 0が一番古い
 
-    df['obs'] = df['close'] / df['close'].max()
+    df['obs'] = df['close'] / df['high'].max()
+
+    #df['openx'] = df['open'] / df['high'].max()
+    #df['highx'] = df['high'] / df['high'].max()
+    #df['lowx'] = df['low'] / df['high'].max()
 
     return df
 
@@ -65,21 +71,20 @@ def write_data(_data, _filename):
 def main():
     maxlen = 50 #過去10日間
     df = get_data()
+    max_val = df['high'].max()
     for i in range(0, len(df) - maxlen):
         data.append(df['obs'].data[i: i + maxlen])
-
-        #if 
-        sa = (df['obs'].data[i + maxlen] - df['obs'].data[i + maxlen - 1])/df['obs'].data[i + maxlen - 1]
-        if sa > 0.01:
-            val = 1
-        elif sa < 0.01:
-            val = -1
-        else:
-            val = 0
-        #target.append( 1 if df['close'].data[i + maxlen] >= 0.01 else 0 )
-        target.append(val)
-
-        #target.append(df['obs'].data[i + maxlen])
+        ##if 
+        #sa = (df['obs'].data[i + maxlen] - df['obs'].data[i + maxlen - 1])/df['obs'].data[i + maxlen - 1]
+        #if sa > 0.01:
+        #    val = 1
+        #elif sa < 0.01:
+        #    val = -1
+        #else:
+        #    val = 0
+        ##target.append( 1 if df['close'].data[i + maxlen] >= 0.01 else 0 )
+        #target.append(val)
+        target.append(df['obs'].data[i + maxlen])
 
 
     #write_data(data, 'some1.csv')
@@ -101,7 +106,6 @@ def main():
     N_train2 = int(N_train * 0.9)
     N_validation = N_train - N_train2
     X_train, X_validation, Y_train, Y_validation = train_test_split(X_train, Y_train, test_size=N_validation)
-
 
 
     '''
@@ -133,7 +137,7 @@ def main():
     '''
     モデル学習
     '''
-    epochs = 30
+    epochs = 30 #あとで30に戻そう！！
     batch_size = 10
 
     hist = model.fit(X_train, Y_train,
@@ -143,18 +147,18 @@ def main():
               callbacks=[early_stopping])
 
 
-    #'''
-    #学習の進み具合を可視化
-    #'''
-    val_acc = hist.history['val_acc']
-    val_loss = hist.history['val_loss']
+    ##'''
+    ##学習の進み具合を可視化
+    ##'''
+    #val_acc = hist.history['val_acc']
+    #val_loss = hist.history['val_loss']
 
-    plt.rc('font', family='serif')
-    fig = plt.figure()
-    plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
-    #plt.plot(range(len(hist.epoch)), val_loss, label='acc', color='black')
-    plt.xlabel('epochs')
-    plt.show()
+    #plt.rc('font', family='serif')
+    #fig = plt.figure()
+    ##plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
+    #plt.plot(range(len(hist.epoch)), val_loss, label='loss', color='black')
+    #plt.xlabel('epochs')
+    #plt.show()
 
 
     #'''
@@ -163,52 +167,64 @@ def main():
     #loss_and_metrics = model.evaluate(X_validation, Y_validation)
     #print('Test loss: %s, Test acc: %s' % (loss, acc))
 
-
-    #y_ = model.predict(X_validation[:1])
+    ##最新予測
+    #new = np.concatenate((X_test[-1:], [Y_test[-1:]]), axis=1)
+    #new = np.delete(new, 0, 1)
+    #y_ = model.predict(new)
     #print('---------')
-    #print(X_validation[:1])
+    #print(new)
     #print('---------')
     #print(y_)
 
 
     ##predict(self, x, batch_size=32, verbose=0)
 
-    #'''
-    #出力を用いて予測
-    #'''
-    #truncate = maxlen
-    #Z = X_validation[:1]  # 元データの最初の一部だけ切り出し
-
-    #original = [f[i] for i in range(maxlen)]
-    #predicted = [None for i in range(maxlen)]
-
     #---------------------------------------------------------
 
+    original = []
+    predicted = []
+    #kakuritsu = []
+    counter = 0
 
-    #original = []
-    #predicted = []
+    highx = df[-N_test:]['high'].data
+    lowx = df[-N_test:]['low'].data
 
-    #for i in range(N_test):
-    #    z_ = X_test[i:i+1]
-    #    y_ = model.predict(z_)
-    #    #sequence_ = np.concatenate(
-    #    #    (z_.reshape(maxlen, n_in)[1:], y_),
-    #    #    axis=0).reshape(1, maxlen, n_in)
-    #    #Z = np.append(Z, sequence_, axis=0)
+    for i in range(N_test):
+        z_ = X_test[i:i+1]
+        y_ = model.predict(z_)
+        original.append(Y_test[i])
+        predicted.append(y_.reshape(-1))
 
-    #    original.append(Y_test[i])
-    #    predicted.append(y_.reshape(-1))
+        high = highx[i]
+        low = lowx[i]
+        val = y_[0][0] * max_val
+        
+        if low < val and val < high:
+            counter += 1
+            #kakuritsu.append(True)
+        #else:
+            #kakuritsu.append(False)
 
-    ##'''
-    ##グラフで可視化
-    ##'''
-    #plt.rc('font', family='serif')
-    #plt.figure()
-    ##plt.ylim([0.5, 1.0])
-    ##plt.plot(toy_problem(T, ampl=0), linestyle='dotted', color='#aaaaaa')
-    #plt.plot(original, linestyle='dashed', color='red')
-    #plt.plot(predicted, color='black')
-    #plt.show()
+    print( counter / N_test)
+
+
+
+
+
+
+
+
+
+    #'''
+    #グラフで可視化
+    #'''
+    plt.rc('font', family='serif')
+    plt.figure()
+    #plt.ylim([0.5, 1.0])
+    #plt.plot(toy_problem(T, ampl=0), linestyle='dotted', color='#aaaaaa')
+    plt.plot(original, linestyle='dashed', color='red')
+    plt.plot(predicted, color='black')
+    plt.show()
 
 
     #print(data)
