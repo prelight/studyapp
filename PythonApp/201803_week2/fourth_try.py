@@ -1,3 +1,5 @@
+
+import os
 import copy
 import sys
 import csv
@@ -6,6 +8,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
+from keras.layers.recurrent import GRU
+from keras.layers.recurrent import LSTM
 from keras.layers.recurrent import SimpleRNN
 from keras.optimizers import Adam
 from keras.callbacks import EarlyStopping
@@ -69,7 +73,7 @@ def write_data(_data, _filename):
 
 
 def main():
-    maxlen = 50 #過去10日間
+    maxlen = 10 #過去10日間
     df = get_data()
     max_val = df['high'].max()
     for i in range(0, len(df) - maxlen):
@@ -121,44 +125,54 @@ def main():
 
 
     early_stopping = EarlyStopping(monitor='val_loss', patience=10, verbose=1)
-
     model = Sequential()
-    model.add(SimpleRNN(n_hidden,
-                        kernel_initializer=weight_variable,
-                        input_shape=(maxlen, n_in)))
+    model.add(GRU(n_hidden,
+                    kernel_initializer=weight_variable,
+                    input_shape=(maxlen, n_in)))
+    #model.add(LSTM(n_hidden,
+    #            kernel_initializer=weight_variable,
+    #            input_shape=(maxlen, n_in)))
+
     model.add(Dense(n_out, kernel_initializer=weight_variable))
     model.add(Activation('linear'))
 
     optimizer = Adam(lr=0.001, beta_1=0.9, beta_2=0.999)
     model.compile(loss='mean_squared_error',
-                  optimizer=optimizer,
-                  metrics=['accuracy'])
-
-    '''
-    モデル学習
-    '''
-    epochs = 30 #あとで30に戻そう！！
-    batch_size = 10
-
-    hist = model.fit(X_train, Y_train,
-              batch_size=batch_size,
-              epochs=epochs,
-              validation_data=(X_validation, Y_validation),
-              callbacks=[early_stopping])
+                    optimizer=optimizer,
+                    metrics=['accuracy'])
 
 
-    ##'''
-    ##学習の進み具合を可視化
-    ##'''
-    #val_acc = hist.history['val_acc']
-    #val_loss = hist.history['val_loss']
+    path = 'param.hdf5'
+    if os.path.exists(path) :
+        model.load_weights(path)
+    else:
 
-    #plt.rc('font', family='serif')
-    #fig = plt.figure()
-    ##plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
-    #plt.plot(range(len(hist.epoch)), val_loss, label='loss', color='black')
-    #plt.xlabel('epochs')
-    #plt.show()
+        '''
+        モデル学習
+        '''
+        epochs = 30 #あとで30に戻そう！！
+        batch_size = 10
+
+        hist = model.fit(X_train, Y_train,
+                  batch_size=batch_size,
+                  epochs=epochs,
+                  validation_data=(X_validation, Y_validation),
+                  callbacks=[early_stopping])
+
+        model.save_weights(path)
+
+        #'''
+        #学習の進み具合を可視化
+        #'''
+        val_acc = hist.history['val_acc']
+        val_loss = hist.history['val_loss']
+
+        plt.rc('font', family='serif')
+        fig = plt.figure()
+        #plt.plot(range(len(hist.epoch)), val_acc, label='acc', color='black')
+        plt.plot(range(len(hist.epoch)), val_loss, label='loss', color='black')
+        plt.xlabel('epochs')
+        plt.show()
 
 
     #'''
@@ -184,31 +198,31 @@ def main():
     original = []
     predicted = []
     #kakuritsu = []
+    all_counter = 0
     counter = 0
 
+    openx = df[-N_test:]['open'].data
     highx = df[-N_test:]['high'].data
     lowx = df[-N_test:]['low'].data
+    closex = df[-N_test:]['close'].data
 
     for i in range(N_test):
         z_ = X_test[i:i+1]
         y_ = model.predict(z_)
         original.append(Y_test[i])
-        predicted.append(y_.reshape(-1))
-        #if (i != 0):
-        #    if Y_test[i] - Y_test[i-1] > 0 and :
+        predicted.append(y_.argmax())
 
-        #    else:
-        if len(original) > 1:
-            if (original[len(original)-1] - original[len(original)-2] > 0) and \
-               (predicted[len(predicted)-1] - predicted[len(predicted)-2] > 0) :
-                counter += 1
-            elif (original[len(original)-1] - original[len(original)-2] < 0) and \
-               (predicted[len(predicted)-1] - predicted[len(predicted)-2] < 0) :
-                counter += 1
-
-
-
-
+        #if len(original) > 1:
+        #    if (closex[i-1] - openx[i-1] > 0):
+        #        all_counter += 1
+        #        if (original[len(original)-1] - original[len(original)-2] > 0) and \
+        #           (predicted[len(predicted)-1] - predicted[len(predicted)-2] > 0):
+        #            counter += 1
+        #    elif  (closex[i-1] - openx[i-1] < 0):
+        #        all_counter += 1
+        #        if (original[len(original)-1] - original[len(original)-2] < 0) and \
+        #           (predicted[len(predicted)-1] - predicted[len(predicted)-2] < 0):
+        #            counter += 1
 
         #high = highx[i]
         #low = lowx[i]
@@ -216,15 +230,8 @@ def main():
         #if low < val and val < high:
         #    counter += 1
 
-    write_data(predicted, "pred")
-
-
-    print( counter / (N_test-1))
-
-
-
-
-
+    #print( counter / (N_test-1))
+    #print( counter / all_counter)
 
 
 
@@ -240,6 +247,9 @@ def main():
     plt.plot(predicted, color='black')
     plt.show()
 
+
+    predicted.reverse()
+    write_data(predicted, "pred.csv")
 
     #print(data)
     #print('-------')

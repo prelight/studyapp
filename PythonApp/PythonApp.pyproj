@@ -116,6 +116,11 @@
     <Compile Include="201803_week1\first_stock.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="201803_week2\00_mnist_bidirectional_rnn_keras.py" />
+    <Compile Include="201803_week2\bidirectional_rnn_try.py" />
+    <Compile Include="201803_week2\fourth_try.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="201803_week2\temp_try.py">
       <SubType>Code</SubType>
     </Compile>
