@@ -31,7 +31,10 @@ def get_cols_name():
     cols.append("low")
     cols.append("close")
     cols.append("volume")
-
+    cols.append("volume1")
+    cols.append("volume2")
+    cols.append("volume3")
+    
     return cols
 
 
