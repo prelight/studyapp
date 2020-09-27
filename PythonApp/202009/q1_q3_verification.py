@@ -42,6 +42,6 @@ print(prob)
 # ・コード
 #     batch_sizeとは？
 #     input_dimって必要？　→ 検証結果：なくても行けたが・・
-#     既に学習したモデルを次回使いたいときは？
+#     既に学習したモデルを次回使いたいときは？　→　https://ebi-works.com/keras-save/#outline__2_2
 
 
