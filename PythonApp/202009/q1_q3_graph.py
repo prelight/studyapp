@@ -16,9 +16,8 @@ def draw_graph(q_data, kinds, expected):
         col = 'red' if kind[0] == 0  else 'black'
 
         plt.plot(x, y, marker='.', color=col) 
-        plt.plot(expected[0], expected[1], marker='.', color='blue') 
 
-    
+    plt.plot(expected[0], expected[1], marker='.', color='blue') #for文の中にいれる必要あるのか？
 
 
     # plt.plot(1,1,marker='.')
